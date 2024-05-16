@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<script>
+
+
+
+//we can use for in loop to print object properties
+var employee = {"name":"manideep","company":"tata", "vehicle":"bike"}
+
+//Demo for template literal 
+let profits = '110000cr'
+let companyName='Tcs'
+//Here this ${val} is called a template literal
+//if u are using this literals we have to enclose this string in back tick
+document.write(` <br> ${companyName} profits in this year is ${profits} <br>`)
+
+
+var s1="orini ayya"
+var s2=`abba re ----->${s1} <br>`
+document.write(s2)
+
+document.write("printing obj properties using for in loop")
+for (key in employee) {
+    document.write("<br>"+key+"-->"+employee[key])
+}
+
+// printing ele in string using for in loop
+let s="wells fargo"
+document.write("printing string elements using for in loop")
+for(index in s){
+document.write("<br> "+s[index])
+}
+
+
+
+// for in loop 
+var companies =['tcs','infosys','wellsfargo','accenture']
+
+//Basic for loop 
+for(let i=0;i<companies.length;i++){
+    document.write("<br>"+companies[i])
+}
+
+//for of ---- for each loop like in java
+document.write("<br> printing using for of loop <br>")
+// this keyword element can be any name
+for (const element of companies) {
+    document.write("<br>"+element)
+}
+
+//for in loop -- in means index
+document.write("<br><br> printing using for in loop <br>")
+// this keyword index can be any name
+for (index in companies) {
+    document.write("<br>"+companies[index])
+}
+
+// ---do while demo
+//     let x=0;
+//     let sum=0;
+//     do {
+//         var num=Number(prompt("enter a num to sum"))
+//         sum =sum +num
+//         if(x==0){
+//             x=5;
+//         }
+//         --x;
+//         document.write("<br> entered number is "+ num )
+//     } while (x>0);
+</script>
+<body>
+    
+</body>
+</html>
