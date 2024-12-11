@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+
+    <script>
+      var trains = [
+        "vande bharath",
+        "vande sadaran",
+        "garibrath",
+        "jan shatabdi",
+      ];
+      let buses = new Array("airavath", "ambari", "amaravathi", "morning star");
+
+      //push(ele) method to add element at last
+      trains.push("pinakini");
+      trains.push("krishna express");
+      document.write(` <br>Trains after adding at last <br>`);
+
+      for (index in trains) {
+        document.write(` --  ${trains[index]}  --     `);
+      }
+
+      let deletedTrain = trains.pop(); // this will delete element at last & print
+      document.write(` <br> Deleted train is --> ${deletedTrain}  <br>`);
+      document.write(` <br>Trains after deleting at last <br>`);
+      //pop() to delete ele at last
+      for (index in trains) {
+        document.write(` --  ${trains[index]}  --     `);
+      }
+
+      document.write(` <br>Trains after adding element at 1st <br>`);
+      // unshift() to add element at 1st
+      trains.unshift("Grand trunk");
+      for (index in trains) {
+        document.write(` --  ${trains[index]}  --     `);
+      }
+      //shift() method to delete ele at 1st
+      deletedTrain = trains.shift();
+      document.write(`<br> deleted train is --> ${deletedTrain}
+<br>Trains after deleting element at 1st is <br>`);
+      for (index in trains) {
+        document.write(` --  ${trains[index]}  --     `);
+      }
+
+      let thirdElement = trains[3];
+      document.write(`<br> 3rd ele is --> ${thirdElement}`);
+
+      let splittedArr = trains.slice(0, 2);
+      document.write(`splitted array is --> ${splittedArr}`);
+
+      document.write(`<br>buses list is  <br> <br>`);
+
+      //Adding element at last index,
+      //we have size of 4 if we store in 100th index instead of 5th index, all values from 5-100th position will be stored as null
+      buses[100] = `vakveri travels`;
+      document.write(` <br> element in 99 th index is ${buses[100]}`);
+
+      // ---- arrays .forEach() method iteration
+      document.write(` <br> arrays .forEach() method iteration`);
+      var ar1 = new Array(40, 50, 60, 70, 80);
+      //forEach(fun) this forEach method can accept a function with 3 parameters
+      // This function can accept 3 parameters ele,index,full array these are fixed
+      function myIterator(ele, ind, arry) {
+        let hike = ele / 10;
+        //here we are
+        ar1[ind] = ele + hike;
+      }
+      document.write(`<br> Array content before modifying ${ar1}`);
+      //HERE forEach is a function which accepts another function as an argument
+      ar1.forEach(myIterator);
+      document.write(`<br> Array content AFTER modifying ${ar1}`);
+    </script>
+  </head>
+
+  <body></body>
+</html>

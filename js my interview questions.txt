@@ -1,0 +1,50 @@
+ javascript
+ ------------------
+ 1) on  clicking a button named "Autofill"-  all the details must be auto entered in text boxes automatically -
+ - use js setAttribute()function to set values
+ 
+	First name: <input type="text" id="fn" /> <br />
+    Last name: <input type="text" id="ln" /> <br />
+	
+  var fnEle = document.getElementById("fn");
+      var lnEle = document.getElementById("ln");
+      function autofiller() {
+        fnEle.setAttribute("value", "Manideep");
+        lnEle.setAttribute("value", "Kumar");
+      }
+      function autoRemover() {
+        fnEle.setAttribute("value", "");
+        lnEle.setAttribute("value", "");
+      }
+      //registering a function on mouse enter
+      fnEle.addEventListener("mouseenter", autofiller);
+      lnEle.addEventListener("mouseenter", autofiller);
+
+ 
+ 1) attach a js event listener for an element onmouseenter a function must be run
+ after running that function - that function should autofill every thing by using ele.addAttribute("value","actual val")
+ ----------window object---------open a new window
+ 2) how to exec a function after 5 mins - like a pop up/subscribe to news letter- should come after 20 sec from page loaded moment
+ -- use window.setTimeout(function, timeafter it should be exec, arg)
+ --recursion-- for every 5 sec same function should exec continously - like check if session is valid or not-
+/  some popup should come - use window.setInterval(function )
+ --clearing the recursion program window.clearInteraval(timerid)
+ 
+ objects --> String, math ,window object methods & properties
+ operators
+ ==============
+ spread
+ strict mode in js
+ 
+ predefined objects in javascript - string, console, window, Element, Date, math
+ Arrays
+ 3) Array. map() , filter(), reduce(), find(), any(), every() 
+ ex:- find max ele ,sum, min value using javascript reduce()
+ 
+ functions, higher order functions, callback functions, closures
+ ex:- call(), apply(), bind()
+ 
+ 
+ anti
+ -----------
+ is method overloading possible in js - no- what happens if we override- last method will be considered

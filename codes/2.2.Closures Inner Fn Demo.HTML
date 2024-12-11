@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="b1" onclick="innerFunc()">Clicked count is :0</button>
+    <script>
+      //Closures in java script - a closure is an inner function which has access to outer variable
+      //even after the outer function exec is completed
+
+      function outer() {
+        let count = 0;
+        let dummyCount = 0;
+        ++dummyCount;
+        document.write(`<br> outer function got executed ${dummyCount}`);
+        let f1 = function inner() {
+          //See here this closure or inner function is able to access outer vars even after outer exec is over
+          ++count;
+          console.log(`inner function has been executed`);
+          document.getElementById("b1").innerHTML = `Clicked count is ${count}`;
+        };
+
+        return f1;
+      }
+      let innerFunc = outer();
+      innerFunc.dummyCount = 100;
+      let innerFunc2 = outer();
+      innerFunc2.dummyCount = 500;
+      //Here outer() got exec 2 times so 2 objs are created each obj global var is diff
+      // and change in content of 1 object doesnt impact other obj global var data
+      document.write(`<br> obj-1 global var data is ${innerFunc.dummyCount}`);
+      document.write(`<br> obj-1 global var data is ${innerFunc2.dummyCount}`);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This keyword - call(),apply(),bind</title>
+  </head>
+  <body>
+    <script>
+      // Replacing this keyword value in global functions
+      var name = "***** Global var Name";
+      function print(band) {
+        console.log("Received is --->", this);
+        console.log(`Hello ${this.name}, you got Band -->  ${band}`);
+      }
+      //calling function normally
+      print("A");
+
+      //calling function with method by replacing this keyword value with another obj
+      var empSathish = {
+        name: "sathish",
+      };
+      print.call(empSathish, "B");
+
+      //Calling print function with apply method by replacing the value for this object
+      //The only diff between call() vs apply()  is in apply , we will pass values inside array
+      var empAnush = {
+        name: "Anush babu",
+      };
+      print.apply(empAnush, ["A"]);
+
+      //Fetching the function by Replacing the value for this keyword
+      //This bind() will returns function by just replacing this keyword with passed obj
+      //we have to execute the returned function
+      var empMani = {
+        name: "Manideep",
+      };
+      var f1 = print.bind(empMani, "A+");
+      f1();
+      //------------calling methods present in objects by replacing this keyword
+      var company = {
+        description: "*** Generic desc from global var",
+        getDesc: function (empcount) {
+          console.log(
+            `Description --> ${this.description}, empcount is ${empcount}`
+          );
+        },
+      };
+
+      //Generally calling a method present in object
+      company.getDesc();
+
+      //Calling a method using call() function
+      var tcsComp = {
+        description: "TCS is govt job",
+      };
+
+      company.getDesc.call(tcsComp, 650000);
+    </script>
+  </body>
+</html>

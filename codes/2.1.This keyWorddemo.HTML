@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This keyword demo</title>
+  </head>
+  <body>
+    first name: <input type="text" id="tb1" value="..." onclick="f2()" /> <br />
+    last name: <input type="text" id="tb2" value="." />
+    <script>
+      "use strict";
+      let x = 10;
+      console.log(`Generally outside this means `, this);
+      function abcd() {
+        console.log(` value of this inside a global function -->`, this);
+      }
+
+      abcd();
+      console.log(window.aaaa);
+      var obj1 = {
+        y: 10,
+        getName: function f1() {
+          console.log(`executing lines inside object methods`);
+          console.log(
+            `value of this key word inside a object's function is ${this}`,
+            this
+          );
+        },
+      };
+      obj1.getName();
+      function f2() {
+        console.log(`executing a function trigged by event listener`);
+        var ele = document.getElementById("tb1");
+        ele.setAttribute("value", "Manideep");
+        console.log(
+          `value of this key word inside a function triggered by event listener is  is ${this}`
+        );
+        console.log(this);
+      }
+      console.log(document.getElementById("tb2"));
+      document.getElementById("tb2").addEventListener("click", function () {
+        console.log("clicked........");
+        console.log(this);
+      });
+    </script>
+  </body>
+</html>

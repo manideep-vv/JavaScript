@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String obj demo</title>
+  </head>
+  <body>
+    <script>
+      let s = "Avs Vaidyaratnam Panniyampally Sankunni Varier <br> ";
+      let s2 = "Avs Vaidyaratnam";
+      let s3 = "Avs VaidyavraVtnvam avs Avs";
+      let s1 =
+        "Avs Avs Arya Vaidya Sala Avs, popularly known as Kottakkal Arya Vaidya Sala,"
+          .concat(
+            "is a healthcare centre located in Kottakkal, in the Indian state of Kerala,"
+          )
+          .concat(
+            "providing services under the Indian traditional medicine system of Ayurveda.<br> "
+          );
+      p("repeat 2 ", s2.repeat(2));
+      p("concat", s1);
+      p("includes ", s1.includes("Avs"));
+      p("includes ", s1.includes("Indian"));
+      p("includes", s.includes("Avs"));
+      p("includes", s.includes("Avs", 1));
+      p("slice 1 till end", s2.slice(1)); //from 1st index till end
+      p("slice 0", s2.slice(0)); //Here zero means from 0th index till end
+      //For slice method last letter is considered as -1th index
+      p("slice -1", s2.slice(-1)); //Here zero means from last letter till end
+      p("slice -1", s2.slice(-2)); //Here zero means from last 2nd letter till end
+      p("slice -5,-2", s2.slice(-5, -2)); //Here zero means from last 2nd letter till end
+      p("slice 2,5 ", s2.slice(2, 5)); //Here zero means from last 2nd letter till end
+
+      p("substring 1", s2.substring(1)); //from 1st index till end
+      p("substring 1,3", s2.substring(1, 3)); //from 1st index till 3rd , 3rd will not be incl
+      p("substring -3 -1", s2.substring(-3, -1)); //substring wont work for negative indexes
+
+      //From 1st index it will print 5 char totally
+      p("substr - from 1 it will print 5 char", s2.substr(1, 5));
+      p("charAt->0", s2.charAt(0));
+      //since below is not a regex this will replace only in single place in case sensitive manner
+      p("replace", s3.replace("Avs", "BVS"));
+      //Both starts with & ends with performs case sensitive comparision
+      p("starts With", s3.startsWith("avs"));
+      p("Ends With", s3.endsWith("Avs"));
+      //Where ever small v is there that will be cutted splitted
+      //Here it will remove the char v and split the rest
+      p("split", s3.split("v")); //split is also case sensitive
+      //since we didnt gave any char all char will be seperated
+      p("split without any arg", s2.split(""));
+
+      p("w", window.closed);
+      function p(str, s) {
+        document.write(str, "-->", s, " <br>");
+      }
+    </script>
+  </body>
+</html>

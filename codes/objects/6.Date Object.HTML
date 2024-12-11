@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date object demo</title>
+  </head>
+  <body>
+    <script>
+      //static methods
+      let millis = Date.now();
+      p("Date.now() elapsed millis since standard date-->", millis);
+
+      //This takes UTC time and converts accordingly
+      let ms = Date.UTC(2024, 11, 20, 1, 2, 3);
+      p("Date.UTC()", new Date(ms));
+
+      //-------Default Constructors
+      p("def cons gives current DT--> ", new Date());
+
+      // -- parameterised constructors
+      //This single arg takes only millis
+      p("cons takes millis ", new Date(millis));
+      //1000 mills ==1sec will be added to standard date jan 1 1970
+      p("millis param cons-->", new Date(1000));
+      //add 1 day to standard date jan 1 1970
+      p("millis param cons-->", new Date(24 * 60 * 60 * 1000));
+      //Minus 1 day to standard date jan 1 1970
+      p("millis param cons-->", new Date(-24 * 60 * 60 * 1000));
+
+      //--String param cons yyyy-MM-dd
+      p("String param cons", new Date("2022-04-28"));
+
+      //String param cons MM-dd-YYYY
+      p("String cons MM-dd-YYYY -->", new Date("11-28-2083"));
+
+      // param cons
+      p("year,monthIndex -->", new Date(2024, 1));
+      p("year,monthIndex,date -->", new Date(2024, 0, 2));
+      p("year,monthInd,d,hours", new Date(2021, 11, 1, 23));
+      p("year,monthInd,d,hours,min", new Date(2021, 11, 1, 23, 59));
+      p("year,monthInd,d,hours,min,sec", new Date(2021, 11, 1, 23, 59, 6));
+      p("year,mon,d,hours,min,sec,ms", new Date(2021, 11, 1, 22, 59, 6, 990));
+
+      //instance methods demo
+      let d2 = new Date(1970, 0, 1, 5, 30, 1);
+      p("provided date is", d2);
+      p("lapsed millis b/n standard time and give date", d2.getTime());
+
+      //math object
+      p("power", Math.pow(10, 16)); //16 zero after 10
+      p("power", Math.pow(100, 8)); //16 zero after 10
+      p("random", Math.random() * Math.pow(10, 16));
+      let a = [1, 2, 7, 1, -20];
+      //below will give error as min wont take an array so suse spread operator
+      p("min", Math.min(a));
+      p("min", Math.min(...a));
+      p("max", Math.max(...a));
+      function p(text, d) {
+        document.write(`${text} ${d}<br> `);
+      }
+    </script>
+  </body>
+</html>

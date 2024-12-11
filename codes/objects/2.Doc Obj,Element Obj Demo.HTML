@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Object demo</title>
+  </head>
+  <body>
+    <div id="one">
+      <h2>First div h2 tag</h2>
+    </div>
+    <div class="c1" id="d2">
+      <h3 id="h3d2">h3 tag of 1st div class-c1</h3>
+    </div>
+    <div class="c1" id="d3">
+      <h3 id="c1h3">hh3 tag of 2nd div class-c1</h3>
+    </div>
+    <div id="s1">StyleDemo</div>
+    <div id="remParent">Direct remove parent element</div>
+    <img src="images/chirala house.PNG" alt="" id="i1" /> <br />
+    First name: <input type="text" id="fn" /> <br />
+    Last name: <input type="text" id="ln" /> <br />
+    Sur name: <input type="text" id="sn" onclick="colorChanger()" />
+    <br />
+    <!-- <button id="submit">Submita</button> -->
+    <style>
+      .green {
+        background-color: lemonchiffon;
+      }
+      .g1 {
+        width: 100px;
+      }
+      .g2 {
+        width: 300px;
+      }
+    </style>
+    <script>
+      "use strict";
+      //--------Element object methods, properties demo
+      //This will get the entire element along with tag
+      console.log(document.getElementById("one"));
+      console.log(typeof document.getElementById("one"));
+      //This will give all the elements on same class
+      console.info(document.getElementsByClassName("c1"));
+      console.log(document.getElementsByTagName("h3"));
+      //for query selector we can pass id/class/tag
+      //But it will give only 1st matching ele
+      console.log(document.querySelector("#one"));
+      console.log(document.querySelector(".c1"));
+      console.log(document.querySelector("h3"));
+
+      //To return all matching ele use this
+      console.log(document.querySelectorAll("h3"));
+      console.log(Object.getOwnPropertyNames(document.getElementById("one")));
+      print(`-------------`);
+
+      console.log(document.getElementById("one").innerHTML);
+      console.log("innerText is -->", document.getElementById("one").innerText);
+
+      //1) Creating an element
+      var h4ele = document.createElement("h4");
+      h4ele.innerText = "Bro i am a h4 tag";
+
+      //2) Adding a child element after last element
+      var d3 = document.getElementById("d3");
+      d3.appendChild(h4ele);
+      console.log("d3 after adding ele -->", d3);
+
+      //3) Adding an child before first element
+      var d2parent = document.getElementById("d2");
+      var h2ele = document.createElement("h2");
+      h2ele.innerText = "Bro i am h2 element inserted using insertBefore()";
+      //Here 1st arg is what ele to insert, 2nd arg is before which ele 1st arg must be placed
+      d2parent.insertBefore(h2ele, document.getElementById("h3d2"));
+
+      //4) Remove the element directly -This will remove the entire element and all child elements
+      var ele1 = document.getElementById("remParent");
+      ele1.remove();
+
+      //5) Remove the child present in that ele
+      var h3c2 = document.getElementById("c1h3");
+      var d3 = document.getElementById("d3");
+      d3.removeChild(h3c2);
+      console.log("after removing child", d3);
+
+      //6) change styles of an ele using style property of Element object
+      var s1Ele = document.getElementById("s1");
+      s1Ele.style.border = "2px black dashed";
+
+      //7) applying a class at runtime
+      var clsAttr = s1Ele.getAttribute("class");
+      var clsList = s1Ele.classList;
+      document.write(
+        `Fetching Existing classes using attr --> ${clsAttr} <br>`
+      );
+
+      document.write(`Fetching Existing classes using property --> ${clsList}`);
+
+      //Adding a new class using  setAttribute
+      s1Ele.setAttribute("class", "green");
+      document.write(`existing classes --> ${clsList}`);
+
+      //Adding a class using classList property
+      s1Ele.classList.add("g1");
+
+      //Adding a event listener on click some function will exe
+      s1Ele.addEventListener("dblclick", () => {
+        s1Ele.classList.add("g2");
+      });
+
+      //Adding a event listenere on click add a attribute called image
+      //  <img src="images/chirala house.PNG" width="" height="" alt="" id="i1" />
+      //initially the img ele doesnt have attributes we are adding the attr based on event
+      var iele = document.getElementById("i1");
+      iele.addEventListener("mouseenter", () => {
+        iele.setAttribute("height", "100px");
+      });
+      iele.addEventListener("mouseleave", () => {
+        iele.setAttribute("height", "300px");
+      });
+
+      //Auto fill a first name and last name on mouseenter
+      var fnEle = document.getElementById("fn");
+      var lnEle = document.getElementById("ln");
+      function autofiller() {
+        fnEle.setAttribute("value", "Manideep");
+        lnEle.setAttribute("value", "Kumar");
+      }
+      function autoRemover() {
+        fnEle.setAttribute("value", "");
+        lnEle.setAttribute("value", "");
+      }
+      //registering a function on mouse enter
+      fnEle.addEventListener("mouseenter", autofiller);
+      lnEle.addEventListener("mouseenter", autofiller);
+
+      fnEle.addEventListener("mouseleave", autoRemover);
+      lnEle.addEventListener("mouseleave", autoRemover);
+      function colorChanger(e) {
+        console.log(e);
+        fnEle.style.backgroundColor = "#aa3344";
+        fnEle.setAttribute("value", "Manideep");
+        lnEle.setAttribute("value", "Manideep");
+      }
+    </script>
+  </body>
+</html>
