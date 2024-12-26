@@ -20,7 +20,8 @@
       fnEle.addEventListener("mouseenter", autofiller);
       lnEle.addEventListener("mouseenter", autofiller);
 
- 
+function - pure, impure function, currying, pass by value, pass by reference, arrow functions, anonymous func, immediately invocable functions
+ misc - == vs ===
  1) attach a js event listener for an element onmouseenter a function must be run
  after running that function - that function should autofill every thing by using ele.addAttribute("value","actual val")
  ----------window object---------open a new window
@@ -31,13 +32,23 @@
  --clearing the recursion program window.clearInteraval(timerid)
  
  objects --> String, math ,window object methods & properties
+ class- global variables, cons, setter & getter methods, inheritance, multiple classes inheritance
+ window- open &closing a new window, resize width,height, move horizontally & vertically 
+ 
+ inheritance- class inheritance, object inheritance
+ 3) 
  operators
  ==============
- spread
+ spread - to copy, template literals ${}, using back ticks
  strict mode in js
  
- predefined objects in javascript - string, console, window, Element, Date, math
+ object- how many ways to create object
+ predefined objects in javascript - string, console, window, Element, Date, math,  
+ async related objects --> XMLHttpRequest(in AJAX) adn their events, JSON , Promise, Error
  Arrays
+ 
+ keywords- async, await
+ 
  3) Array. map() , filter(), reduce(), find(), any(), every() 
  ex:- find max ele ,sum, min value using javascript reduce()
  
@@ -45,6 +56,17 @@
  ex:- call(), apply(), bind()
  
  
+ 
  anti
  -----------
  is method overloading possible in js - no- what happens if we override- last method will be considered
+ if we pre-prend a method with async- are these methods getting executed asynchronously
+ 
+ tough
+ --------
+ 1) promise - write try catch finally program in finally
+ fetch api
+ 
+ internal mechanism
+ -----------
+ memory - queue, task queue, ex:- all window.setTimeout(), fetch() - these tasks will be submitted to queue

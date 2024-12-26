@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>async await demo</title>
+  </head>
+  <body>
+    <h1>async await demo</h1>
+
+    <script>
+      //an async keyword will make a function to return the promise obj instead of original obj
+      async function p1() {
+        log("1.exec js function as onclick fired");
+        let p = fetch("https://jsonplaceholder.typicode.com/users");
+        log("2.after fetch() REST invocation", p);
+
+        p.then((response) =>
+          //here json() method returns promise again hence then() is invoked again on json()
+          response.json().then((data) => log("3.no await data--", data))
+        );
+        log("4.promise defined");
+      }
+
+      let x = p1();
+      console.log(x);
+      console.log("5.fun p1 executed");
+      //----------------------- await demo
+      console.log("----------------------- await demo");
+
+      async function f2await() {
+        log("1.exec f2await() function");
+        //Bec of await this promise will be executed after that only next statements will be exec
+        await fetch("https://jsonplaceholder.typicode.com/users").then((res) =>
+          res.json().then((data) => log("2.resp frmo await", data))
+        );
+        log("3.after fetch() REST invocation");
+      }
+      f2await();
+
+      function log(arg1, arg2) {
+        console.log(arg1, "-->", arg2);
+      }
+    </script>
+  </body>
+</html>

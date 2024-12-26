@@ -7,9 +7,38 @@
   </head>
   <body>
     <h1>vamov</h1>
+    <button onclick="openNewWin()">Click here to open new window</button> <br />
+    <button onclick="closePrevOpened()">
+      Click here to close recently opend window
+    </button>
+    <br />
+
     <script>
+      let w1;
+      function openNewWin() {
+        //Note we can only close our page- we cant close google/instagram other pages
+        //to close we need some plugins
+        w1 = window.open(
+          "6.Date Object.HTML",
+          "_blank",
+          "height=300px,width=800px"
+        );
+        console.log("window opened");
+      }
+      function closePrevOpened() {
+        w1.close();
+        console.log("popup closed");
+      }
+
+      function emp() {
+        console.log("called a function ");
+      }
       p("ffdf", this);
       console.log(this);
+      p("doc property", window.document);
+
+      let x = new emp();
+      emp();
       function p(str, s) {
         document.write(str, "-->", s, " <br>");
       }

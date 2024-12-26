@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classes with inheritance</title>
+  </head>
+  <body>
+    <h1>Classes with Inheritance</h1>
+    <script>
+      class Person {
+        nationality;
+        //to declare cons , constructor keyword is mandatory
+        constructor(n, m) {
+          console.log("parent class cons invoked");
+          this.name = n;
+          this.mobileNum = m;
+        }
+
+        //This is a normal method
+        getPersonDetails() {
+          console.log("person details are -->", this.name, this.mobileNum);
+        }
+
+        //while writing setter methods make sure u declare those variable globally
+        set nationality(n) {
+          this.nationality = n;
+          console.log("invoked setter method");
+        }
+
+        //this is a getter method - but normal method also can do same
+        get getPersonInfo() {
+          return this.name + "-->" + this.mobileNum;
+        }
+      }
+      //a class can happily extend another class
+      class Employee extends Person {
+        constructor(n, m, sal, cn) {
+          //calling super class cons with super()
+          console.log("calling child class con");
+          super(n, m);
+          this.salary = sal;
+          this.companyName = cn;
+        }
+      }
+
+      let e = new Employee("Radhika", 8500, 120, "broad");
+    </script>
+  </body>
+</html>

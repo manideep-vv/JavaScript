@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototype demo</title>
+  </head>
+  <body>
+    <h1>Prototype demo</h1>
+    <script>
+      let p = new Object();
+      function movie(name, director) {
+        console.log(this);
+        //declaring global variable
+        this.name = name;
+        this.director = director;
+        //declaring instance method
+        this.getDetails = function () {
+          console.log("details are ", name, director);
+        };
+        console.log("fun executed");
+      }
+      //Declaring a static method associated with class movie
+      movie.prototype.collectionDetails = function () {
+        console.log("static method fun  collectionDetails executed");
+      };
+      let m = new movie("RRR", "rajamouli");
+
+      let emp = {
+        name: "mani santu",
+        age: 30,
+        city: {
+          cityName: "hyd",
+          stateCode: "TN",
+        },
+      };
+      // Destructuring object now object keys will be mapped to individual variables
+      //while destructuring obj prop name and left side var name must be same
+      let {
+        name,
+        age,
+        city: { cityName, stateCode },
+      } = emp;
+      console.log(name, age, cityName, stateCode);
+
+      //the below is called immediately invocable functions
+      (function outer() {
+        // console.log("x val is", x);
+        function inner() {
+          let x = 10;
+        }
+        inner();
+      })();
+
+      let n1 = 10;
+      function impure(a, b) {
+        //This is called impure fun bec its modifying the outside variables and modifying args passed to that func
+        n1 = 4;
+        ++a;
+        //Here for same args this function will return diff values - so this is not predictable
+        return a * b * Math.random();
+      }
+      console.log(impure(5, 6));
+      console.log(impure(5, 6));
+      console.log(impure(5, 6));
+
+      let e1 = {
+        name: "mani",
+        age: 31,
+      };
+      console.log(e1);
+      //here e2 obj will inherit all props from e1- if u modify e2 prop e1 will not be modified
+      //Bec of this e2 doesnt have any prop but after creating e2 obj we can add prop to it
+      let e2 = Object.create(e1);
+      e2.name = "santu";
+
+      //as u created obj using create method , it really created another obj in heap
+      console.log("is e1==e2", e1 == e2); //since both are 2 diff obj this is false
+      //Here after creating e1 obj we are adding a new property called companyName
+      e1.companyName = "tcs";
+      //below gives true, bec e2 parent is e1
+      console.log("e2.__proto__==p1 -->", e2.__proto__ == e1);
+      console.log(e1);
+      // console.log(`e2 --> `, e2);
+
+      //--__proto__ is nothing but parent obj reference
+      console.log(e2);
+    </script>
+  </body>
+</html>

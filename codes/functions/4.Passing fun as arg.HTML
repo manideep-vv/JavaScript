@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passing fun as arg</title>
+  </head>
+  <body>
+    <h1>Passing fun as arg</h1>
+    <script>
+      //this is a arrow function- as this is a single line - no return keyword and no braces
+      let incrementer = (a) => a + 1;
+      //Here we are passing the incrementer fun as arg to another function
+      invoker(incrementer);
+
+      //Here this invoker fun takes any function as arg it will just invoke the passed function
+      function invoker(anyF) {
+        let x = anyF(5);
+        console.log("invoking a function and got ret as ", x);
+      }
+    </script>
+  </body>
+</html>

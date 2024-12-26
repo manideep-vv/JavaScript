@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise demo</title>
+  </head>
+  <body>
+    <h1>Promise object demo</h1>
+    <button onclick="p1()">Click here to exec promise</button>
+    <script>
+      function p1() {
+        //Here for below promise cons we are passing 2 parm anonymous fun
+        let p = new Promise(function (func1, func2) {
+          let r = false;
+          if (r) {
+            //Here we are calling 1st arg function to declaring promise as success
+            func1("Bro success Bro");
+          } else {
+            //Here we are calling 2nd arg function to declaring promise as failed
+            func2("Bro failed bro");
+          }
+        });
+        //for then method we are passing anonymous function
+        //This then will be executed only when promise is success
+        p.then(function (datah) {
+          console.log(datah, " from then method");
+        });
+
+        //This then will be executed only when promise is failed
+        p.catch(function (data1) {
+          console.log(data1, " from catch method ");
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX</title>
+  </head>
+  <style>
+    #r1 {
+      border: 1px dashed aqua;
+    }
+  </style>
+  <body></body>
+  Enter country name here:
+  <input type="text" id="t1" />
+  <br />
+  <button onclick="countryFetcher()">Fetch Country Details</button>
+  <div>
+    <label for="result">Result</label>
+    <div id="r1"></div>
+  </div>
+
+  <script>
+    function countryFetcher() {
+      let r1 = document.getElementById("r1");
+      console.log("executing function due to on-click()");
+      let xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://restcountries.com/v3.1/name/usa", true);
+      console.log(xhr.readyState);
+      xhr.send();
+      console.log("status after send()", xhr.readyState);
+      xhr.onload = function () {
+        if (xhr.status == 200) {
+          console.log("status after receiving response", xhr.readyState);
+          // console.log("got full response from string -->", xhr.responseText);
+          let res = JSON.parse(xhr.responseText);
+          console.log("Response as json-->", res);
+          let flagPath = res[0].flags.png;
+          r1.innerHTML = `<img src= ${flagPath} >`;
+          log("Response as string", res[0].flags.png);
+        } else {
+          console.warn("some error came");
+        }
+      };
+    }
+
+    function log(l1, l2) {
+      console.log(l1, "---->", l2);
+    }
+  </script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch and await</title>
+  </head>
+  <body>
+    <h1>Fetch and await</h1>
+
+    <script>
+      async function invokeRestAPI() {
+        //fetch generally returns a promise, await will wait for promise to resolve
+        let p = await window.fetch(
+          "https://jsonplaceholder.typicode.com/todos/1"
+        );
+        p.json().then((data) => {
+          console.log(data);
+        });
+        console.log(p);
+      }
+      invokeRestAPI();
+    </script>
+  </body>
+</html>

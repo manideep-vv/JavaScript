@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise object demo 2</title>
+  </head>
+  <style>
+    button {
+      height: 30px;
+    }
+  </style>
+  <body>
+    <h1>Promise object with XHR</h1>
+    <button onclick="p1()">Click here to exec promise with XHR demo</button>
+
+    <script>
+      function p1() {
+        console.log("executing function as button click");
+
+        let pr = new Promise(function (arg1, arg2) {
+          let xhr = new XMLHttpRequest();
+          xhr.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+          log("xhr status before send", xhr.readyState);
+          xhr.send();
+          xhr.onload = function () {
+            if (xhr.status == 200) {
+              log("xhr status after receiving data", xhr.readyState);
+              console.log("HTTP status after receiving data", xhr.status);
+              //by default we will get data as String - hence we need to conver to string
+              // log("response", xhr.responseText);
+              log("response", JSON.parse(xhr.responseText));
+              //If we got response as 200 then we can declare promise as success by invoking 1st arg fun
+              arg1(JSON.parse(xhr.responseText)); //after then promise.then() will be exec by js framework
+            } else {
+              log("http req failed , declaring promise as failed");
+              arg2("Bro exec failed");
+            }
+          };
+        });
+        //this then method will be exec by fw when promise is success
+        let tr = pr.then(function (data) {
+          log("Exec pr.then() as promise is success ", data);
+        });
+        log("response type of then", tr);
+        //this catch method will be exec by fw when promise is failed
+        pr.catch((error) => {
+          log("in pr.catch() as promise exec is failed  ", error);
+        });
+        //this finally method will be exec by fw when promise is either success or failed
+        pr.finally(() => {
+          log("in pr.finally block");
+        });
+      }
+
+      function log(arg1, arg2) {
+        console.log(arg1, "-->", arg2);
+      }
+    </script>
+  </body>
+</html>

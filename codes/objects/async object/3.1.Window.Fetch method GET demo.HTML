@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch() method GET protocol demo</title>
+  </head>
+  <body>
+    <h1>Fetch method demo</h1>
+    <button onclick="p1()">
+      Click here to use window.fetch() <br />
+      to hit REST api like XMLHttpRequest
+    </button>
+    <script>
+      function p1() {
+        //Here fetch method will return a promise, if succes then() will be called else catch()
+        //Here we will get Response object after invoking REST api
+        window
+          .fetch("https://jsonplaceholder.typicode.com/users/1")
+          .then(function s1(data) {
+            //Here we got response object
+            log("Got response object", data);
+            //Here the json() method also gives us promise hence we called then()
+            data.json().then(function (data) {
+              log("data is ", data);
+            });
+          })
+          .catch(function f1(data) {
+            log("get method");
+          });
+      }
+
+      function log(arg1, arg2) {
+        console.log(arg1, "-->", arg2);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>>Fetch() method GET protocol demo</title>
+  </head>
+  <body>
+    <h1>Fetch() method POST protocol demo</h1>
+    <button onclick="p1()">
+      Click here to use window.fetch() <br />
+      to hit REST api like XMLHttpRequest
+    </button>
+
+    <script>
+      function p1() {
+        //this fetch() method will return promise
+        window
+          .fetch("https://jsonplaceholder.typicode.com/posts", {
+            method: "POST",
+            body: JSON.stringify({
+              name: "kalki 2898 AD",
+              email: "prabas@28998gmail.com",
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((response) => response.json().then((r) => log(r)));
+        //in above the json method also returns promise
+      }
+      function log(arg1, arg2) {
+        console.log(arg1, "-->", arg2);
+      }
+    </script>
+  </body>
+</html>

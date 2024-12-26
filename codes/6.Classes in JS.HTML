@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classes in js</title>
+  </head>
+  <body>
+    <h1>Classes in js</h1>
+
+    <script>
+      class Employee {
+        companyName;
+        //this defines a constructor
+        constructor(name, address) {
+          this.name = name;
+          this.address = address;
+          this.salary = 10000;
+        }
+
+        //setter method- note this setter method name must be different than variable name
+        //Note if u are declaring setter method, you must declare a global variable
+        set companyName(value) {
+          console.log("setter method invoked");
+          this.companyName = value;
+        }
+
+        setBand(val) {
+          this.band = val;
+        }
+        // Corrected getter method
+        get companyName() {
+          return `Bro company name is ${this.companyName}`;
+        }
+
+        //this is general public method
+        printAllDetails() {
+          console.log(this.name, this.address, this.salary);
+        }
+      }
+      let emp = new Employee("mani", "hyd");
+      //Here both getter & setter methods are treated as variables instead of functions
+      //Here companyName is a setter method but we treated as a variable
+      emp.companyName = "TATA consultancy services";
+      console.log(emp.companyName);
+    </script>
+  </body>
+</html>
